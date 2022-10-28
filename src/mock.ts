@@ -1518,11 +1518,20 @@ const AllData = {
 };
 
 export function getSeller() {
-  return AllData.seller;
+  return {
+    erron: 0,
+    data: AllData.seller,
+  };
 }
 export function getGoods() {
-  return AllData.goods;
+  return {
+    erron: 0,
+    data: AllData.goods,
+  };
 }
 export function getRatings() {
-  return AllData.ratings;
+  return {
+    erron: 0,
+    data: AllData.ratings,
+  };
 }
