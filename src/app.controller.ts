@@ -1,20 +1,21 @@
-import { Controller, Get } from '@nestjs/common';
+import { Bind, Controller, Get, Param } from '@nestjs/common';
 import { AppService } from './app.service';
 
-@Controller()
+@Controller('api')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
-  getHello() {
-    return this.appService.getSeller();
+  @Get(':api')
+  @Bind(Param('api'))
+  getSeller(api) {
+    return this.appService[`${api}`]();
   }
-  @Get()
-  getGoods() {
-    return this.appService.getGoods();
-  }
-  @Get()
-  getRatings() {
-    return this.appService.getRatings();
-  }
+  // @Get(':getGoods')
+  // getGoods() {
+  //   return this.appService.getGoods();
+  // }
+  // @Get(':getRatings')
+  // getRatings() {
+  //   return this.appService.getRatings();
+  // }
 }
