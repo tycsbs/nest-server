@@ -21,6 +21,7 @@ jobs:
     - run: |
         npm i
         npm run build
+        cd ..
         pm2 stop main
         pm2 start main
         pm2 save

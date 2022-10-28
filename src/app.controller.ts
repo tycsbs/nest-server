@@ -7,15 +7,13 @@ export class AppController {
 
   @Get(':api')
   @Bind(Param('api'))
-  getSeller(api) {
-    return this.appService[`${api}`]();
+  getSeller(api: string) {
+    if (api === 'seller') {
+      return this.appService.getSeller();
+    } else if (api === 'goods') {
+      return this.appService.getGoods();
+    } else {
+      return this.appService.getRatings();
+    }
   }
-  // @Get(':getGoods')
-  // getGoods() {
-  //   return this.appService.getGoods();
-  // }
-  // @Get(':getRatings')
-  // getRatings() {
-  //   return this.appService.getRatings();
-  // }
 }
