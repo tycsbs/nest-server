@@ -3,6 +3,12 @@ import { Injectable } from '@nestjs/common';
 import { firstValueFrom } from 'rxjs';
 import { getSeller, getGoods, getRatings } from './mock';
 
+type SickDataMo = {
+  ret: number;
+  data: any;
+};
+
+const ERROR_OK = 0;
 @Injectable()
 export class AppService {
   constructor(private httpService: HttpService) {}
@@ -19,9 +25,22 @@ export class AppService {
     const baseURL =
       'https://api.inews.qq.com/newsqa/v1/query/inner/publish/modules/';
     const url = 'list?modules=statisGradeCityDetail,diseaseh5Shelf';
-    const data = await firstValueFrom(
+    const {
+      data: { data, ret }
+    } = (await firstValueFrom(
       this.httpService.post(`${baseURL}${url}`)
-    );
-    return data.data;
+    )) as unknown as SickDataMo;
+    if (+ret === ERROR_OK) {
+      return {
+        status: 0,
+        data: data
+      };
+    } else {
+      return {
+        status: 500,
+        data: '',
+        message: '内部错误!'
+      };
+    }
   }
 }
