@@ -1,20 +1,26 @@
-import { Controller, Get } from '@nestjs/common';
+import { Bind, Controller, Get, Param, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 
-@Controller()
+@Controller('api')
 export class AppController {
+  private sickData: any;
   constructor(private readonly appService: AppService) {}
 
-  @Get()
-  getHello() {
+  @Get('/seller')
+  getSeller() {
     return this.appService.getSeller();
   }
-  @Get()
+  @Get('/goods')
   getGoods() {
     return this.appService.getGoods();
   }
-  @Get()
+  @Get('/ratings')
   getRatings() {
     return this.appService.getRatings();
+  }
+
+  @Get('/getSickData')
+  getSickData() {
+    return this.appService.getSickData();
   }
 }
