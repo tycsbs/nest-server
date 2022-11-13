@@ -29,7 +29,7 @@ export class AppService {
     const {
       data: { data, ret }
     } = (await firstValueFrom(
-      this.httpService.get(`${baseURL}${url}`)
+      this.httpService.post(`${baseURL}${url}`)
     )) as unknown as SickDataMo;
     if (+ret === ERROR_OK) {
       return {
@@ -50,7 +50,7 @@ export class AppService {
     const {
       data: { data, ret }
     } = (await firstValueFrom(
-      this.httpService.get(url)
+      this.httpService.post(url)
     )) as unknown as SickDataMo;
     if (+ret === ERROR_OK) {
       return {
