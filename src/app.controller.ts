@@ -23,4 +23,9 @@ export class AppController {
   getSickData() {
     return this.appService.getSickData();
   }
+
+  @Get('/getSickRankList')
+  getSickRankList() {
+    return this.appService.getSickRankList();
+  }
 }
