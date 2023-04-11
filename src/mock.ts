@@ -1,6 +1,6 @@
 const AllData = {
   seller: {
-    name: '粥品香坊（回龙观）',
+    name: '粥品香坊（回龙观|太古里）',
     description: '蜂鸟专送',
     deliveryTime: 38,
     score: 4.2,
