@@ -1520,18 +1520,18 @@ const AllData = {
 export function getSeller() {
   return {
     erron: 0,
-    data: AllData.seller,
+    data: AllData.seller
   };
 }
 export function getGoods() {
   return {
     erron: 0,
-    data: AllData.goods,
+    data: AllData.goods
   };
 }
 export function getRatings() {
   return {
     erron: 0,
-    data: AllData.ratings,
+    data: AllData.ratings
   };
 }
