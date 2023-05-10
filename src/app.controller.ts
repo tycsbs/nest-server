@@ -28,4 +28,9 @@ export class AppController {
   getSickRankList() {
     return this.appService.getSickRankList();
   }
+
+  @Get('/getTrendData')
+  getTrendData() {
+    return this.appService.getMongoTrendData();
+  }
 }
