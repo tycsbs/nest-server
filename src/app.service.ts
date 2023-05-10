@@ -91,15 +91,17 @@ export class AppService {
   async getTrendData2() {
     const url =
       'https://vipact.api.mgtv.com/api/v1/act/vote/charlist?ticket=9A1D1848A6093515A36A9240BEBEF814&act_name=20230414cf2023&count=50&invoker=mobile-zhifubao&_dx_seq_id=75550b80-b1f6-8af7-119a-35b4ae44f3e5&v=v4';
-    const res = await firstValueFrom(this.httpService.get(url));
-    if (res.data) {
+    const {
+      data: { errno, ret, character_list }
+    } = await firstValueFrom(this.httpService.get(url));
+    if (ret === ERROR_OK) {
       return {
         status: 0,
-        data: res.data
+        data: character_list
       };
     } else {
       return {
-        status: 500,
+        status: errno,
         data: '',
         message: '内部错误!'
       };
